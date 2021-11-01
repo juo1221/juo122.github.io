@@ -47,7 +47,6 @@ const PostList: FunctionComponent<PostListProps> = function ({
             frontmatter,
           },
         }: PostListItemType) => {
-          console.log(slug)
           return <PostItem {...frontmatter} link={slug} key={id} />
         },
       )}
