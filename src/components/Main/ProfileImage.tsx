@@ -14,6 +14,10 @@ const ProfileImageWrapper = styled(GatsbyImage)`
   height: 150px;
   margin-bottom: 30px;
   border-radius: 50%;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
 
   @media (max-width: 768px) {
     width: 80px;
