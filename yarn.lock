@@ -2125,6 +2125,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-helmet@^6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.4.tgz#3e54a3eb37ba7fb34ffafc64f425be4e68df03b9"
+  integrity sha512-jyx50RNZXVaTGHY3MsoRPNpeiVk8b0XTPgD/O6KHF6COTDnG/+lRjPYvTK5nfWtR3xDOux0w6bHLAsaHo2ZLTA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "17.0.30"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.30.tgz#2f8e6f5ab6415c091cc5e571942ee9064b17609e"
