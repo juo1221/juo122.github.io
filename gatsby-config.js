@@ -6,8 +6,9 @@ module.exports = {
     siteUrl: `<https://my-website-link.com>`,
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     {
-      resolev: 'gatsby-plugin-canocical-urls',
+      resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: `<https://my-website.com/>`,
         stripQueryString: true,
