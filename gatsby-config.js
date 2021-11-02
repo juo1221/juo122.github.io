@@ -3,14 +3,20 @@ module.exports = {
     title: `Junior frontend blog`,
     description: `안녕하세요 주니어 프론트엔드 개발자의 블로그입니다.`,
     author: `Juo`,
-    siteUrl: `<https://my-website-link.com>`,
+    siteUrl: `https://my-website.com`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: `<https://my-website.com/>`,
+        siteUrl: `https://my-website.com`,
         stripQueryString: true,
       },
     },
