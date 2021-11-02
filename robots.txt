@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://juo1221.github.io/sitemap/sitemap-index.xml
+Host: https://juo1221.github.io

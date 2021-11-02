@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-template-tsx",
+    "path": "/bangwol/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"html":"","frontmatter":{"title":"Optimization","summary":"방고리녀석 사진 구경하기!","date":"2020.07.29.","categories":["강아지","말티즈","방울이"],"thumbnail":{"childImageSharp":{"gatsbyImageData":{"layout":"constrained","backgroundColor":"#181818","images":{"fallback":{"src":"/static/df0aaf047f5e892a35acb6e1566ce30d/659bb/bw1.png","srcSet":"/static/df0aaf047f5e892a35acb6e1566ce30d/b66a1/bw1.png 325w,\n/static/df0aaf047f5e892a35acb6e1566ce30d/e9108/bw1.png 650w,\n/static/df0aaf047f5e892a35acb6e1566ce30d/659bb/bw1.png 1300w","sizes":"(min-width: 1300px) 1300px, 100vw"},"sources":[{"srcSet":"/static/df0aaf047f5e892a35acb6e1566ce30d/2a4a6/bw1.webp 325w,\n/static/df0aaf047f5e892a35acb6e1566ce30d/4a3b0/bw1.webp 650w,\n/static/df0aaf047f5e892a35acb6e1566ce30d/59113/bw1.webp 1300w","type":"image/webp","sizes":"(min-width: 1300px) 1300px, 100vw"}]},"width":1300,"height":714}},"publicURL":"/static/df0aaf047f5e892a35acb6e1566ce30d/bw1.png"}}}}]}},"pageContext":{"slug":"/bangwol/"}},
+    "staticQueryHashes": []}
