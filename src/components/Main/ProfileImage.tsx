@@ -28,7 +28,6 @@ const ProfileImageWrapper = styled(GatsbyImage)`
 const ProfileImage: FunctionComponent<ProfileImageProps> = function ({
   profileImage,
 }) {
-  console.log(profileImage)
   return <ProfileImageWrapper image={profileImage} alt="Profile Image" />
 }
 
