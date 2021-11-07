@@ -51,7 +51,7 @@ const GoToMainButton = styled(Link)`
   @media (max-width: 768px) {
     font-size: 20px;
     &::after {
-      content: ' 가욧!';
+      content: ' 가기!';
     }
   }
 `
@@ -60,7 +60,7 @@ const NotFoundPage: FunctionComponent = function () {
   return (
     <NotFoundPageWrapper>
       <GlobalStyle />
-      <NotFoundText>왜 여기로 들어옴?</NotFoundText>
+      <NotFoundText>잘못 왔어요!</NotFoundText>
       <NotFoundDescription>
         찾을 수 없는 페이지입니다. <br />
         다른 콘텐츠를 보러 가보시겠어요?
