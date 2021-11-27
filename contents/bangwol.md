@@ -1,7 +1,11 @@
 ---
-date: '2020-07-29'
-title: 'Optimization'
-categories: ['강아지', '말티즈', '방울이']
-summary: '방고리녀석 사진 구경하기!'
+date: '2021-11-26'
+title: '빨간모자 방울?'
+categories: ['방울이']
+summary: '귀여운 녀석'
 thumbnail: './images/bangImg/bw1.png'
 ---
+
+### <img src="./images/bangImg/moja.png" />
+
+방울이는 멋쟁이 ~ ? 😱😱😱
