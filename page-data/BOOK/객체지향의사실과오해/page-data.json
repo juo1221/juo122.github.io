@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-template-tsx",
+    "path": "/BOOK/객체지향의사실과오해/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"html":"<p>s</p>","frontmatter":{"title":"객체지향의 사실과 오해","summary":"book 리뷰","date":"2021.11.29.","categories":["Book"],"thumbnail":{"childImageSharp":{"gatsbyImageData":{"layout":"constrained","backgroundColor":"#f8a8a8","images":{"fallback":{"src":"/static/81548630d858a99ff70fcd742e8ffebd/afa5c/book.png","srcSet":"/static/81548630d858a99ff70fcd742e8ffebd/2fe1e/book.png 480w,\n/static/81548630d858a99ff70fcd742e8ffebd/9bec7/book.png 960w,\n/static/81548630d858a99ff70fcd742e8ffebd/afa5c/book.png 1920w","sizes":"(min-width: 1920px) 1920px, 100vw"},"sources":[{"srcSet":"/static/81548630d858a99ff70fcd742e8ffebd/3a3a2/book.webp 480w,\n/static/81548630d858a99ff70fcd742e8ffebd/bde8a/book.webp 960w,\n/static/81548630d858a99ff70fcd742e8ffebd/c512e/book.webp 1920w","type":"image/webp","sizes":"(min-width: 1920px) 1920px, 100vw"}]},"width":1920,"height":1080}},"publicURL":"/static/81548630d858a99ff70fcd742e8ffebd/book.png"}}}}]}},"pageContext":{"slug":"/BOOK/객체지향의사실과오해/"}},
+    "staticQueryHashes": []}
