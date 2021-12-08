@@ -9,7 +9,7 @@ const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
   flex-direction: column;
-  width: 768px;
+  width: 70%;
   margin: 0 auto;
   padding: 100px 0;
   word-break: break-all;
@@ -122,7 +122,7 @@ const MarkdownRenderer = styled.div`
     }
 
     hr {
-      margin: 50px 0;
+      margin: 100px 0;
     }
   }
 `
