@@ -1,8 +1,8 @@
 ---
 date: '2021-11-29'
-title: 'Tail Recursion'
+title: 'Tail Recursion 1'
 categories: ['Tech']
-summary: '꼬리물기 최적화에 대해 알아보자'
+summary: '꼬리물기 최적화에 대해 알아보자.'
 thumbnail: '../images/postBg/tech.png'
 ---
 
