@@ -8,13 +8,14 @@ type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItemWrapper = styled(Link)`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-radius: 10px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   transition: 0.3s box-shadow;
+  min-width: 500px;
   cursor: pointer;
   &:hover {
-    box-shadow: 0 0 8px #324a51;
+    box-shadow: 0 0 5px #324a51;
   }
   @media (max-width: 768px) {
     margin: 8px 12px;
@@ -22,9 +23,8 @@ const PostItemWrapper = styled(Link)`
 `
 
 const ThumbnailImage = styled(GatsbyImage)`
-  width: 100%;
-  height: 200px;
-  border-radius: 10px 10px 0 0;
+  width: 300px;
+  border-left: 1px solid lightgrey;
 `
 const PostItemContent = styled.div`
   display: flex;
@@ -87,7 +87,6 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
@@ -98,6 +97,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         </Category>
         <Summary>{summary}</Summary>
       </PostItemContent>
+      <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
     </PostItemWrapper>
   )
 }

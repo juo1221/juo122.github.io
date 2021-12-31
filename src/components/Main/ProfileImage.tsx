@@ -10,8 +10,9 @@ type ProfileImageProps = {
 //   'https://online.codingapple.com/wp-content/uploads/2021/03/profile.png '
 
 const ProfileImageWrapper = styled(GatsbyImage)`
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid white;
   margin-bottom: 30px;
   border-radius: 50%;
   -webkit-backface-visibility: hidden;

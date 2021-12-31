@@ -9,8 +9,8 @@ type IntroductionProps = {
 
 const Background = styled.div`
   width: 100%;
-  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-  color: #ffffff;
+  background: url('https://source.unsplash.com/category/nature/1600x900?q=80&fm=jpg&fitsss=crop')
+    center/cover no-repeat;
 `
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +20,6 @@ const Wrapper = styled.div`
   width: 768px;
   height: 400px;
   margin: 0 auto;
-
   @media (max-width: 768px) {
     width: 100%;
     height: 300px;
@@ -30,7 +29,7 @@ const Wrapper = styled.div`
 const SubTitle = styled.div`
   font-size: 20px;
   font-weight: 400;
-
+  color: #ececec;
   @media (max-width: 768px) {
     font-size: 15px;
   }
@@ -40,6 +39,7 @@ const Title = styled.div`
   margin-top: 5px;
   font-size: 35px;
   font-weight: 700;
+  color: #ececec;
 
   @media (max-width: 768px) {
     font-size: 25px;
