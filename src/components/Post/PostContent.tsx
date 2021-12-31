@@ -9,19 +9,19 @@ const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 700px;
   margin: 0 auto;
   padding: 100px 0;
   word-break: break-all;
 
   // Markdown Style
-  line-height: 1.8;
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 1rem;
 
   // Apply Padding Attribute to All Elements
   p {
     padding: 3px 0;
+    color: #434343;
+    font-family: Georgia;
   }
 
   // Adjust Heading Element Style
@@ -35,24 +35,36 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
   hr + h1,
   hr + h2,
   hr + h3 {
-    margin-top: 0;
+    margin-top: 10px;
+  }
+
+  h1 + hr,
+  h2 + hr,
+  h3 + hr {
+    margin-top: -30px;
   }
 
   h1 {
+    font-family: sans-serif;
+    color: #434343;
     font-size: 30px;
   }
 
   h2 {
+    font-family: sans-serif;
+    color: #434343;
     font-size: 25px;
   }
 
   h3 {
+    font-family: sans-serif;
+    color: #434343;
     font-size: 20px;
   }
 
@@ -67,20 +79,37 @@ const MarkdownRenderer = styled.div`
   // Adjust List Element Style
   ol,
   ul {
-    margin-left: 20px;
-    padding: 30px 0;
+    margin-left: 40px;
+    padding: 10px;
   }
 
   // Adjust Horizontal Rule style
   hr {
-    border: 1px solid #000000;
-    margin: 100px 0;
+    border-color: #ffffff44;
+  }
+  hr + * {
+    margin-top: 30px;
   }
 
   // Adjust Link Element Style
   a {
     color: #4263eb;
     text-decoration: underline;
+  }
+
+  // Adjust strong Element Style
+
+  strong {
+    color: #e08728;
+  }
+
+  // Adjust img Element Style
+
+  em {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: light-grey;
   }
 
   // Adjust Code Style
@@ -119,10 +148,6 @@ const MarkdownRenderer = styled.div`
 
     img {
       width: 100%;
-    }
-
-    hr {
-      margin: 100px 0;
     }
   }
 `

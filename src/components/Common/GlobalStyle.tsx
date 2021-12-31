@@ -8,13 +8,18 @@ const defaultStyle = css`
     margin: 0;
     box-sizing: border-box;
     font-family: 'Noto Serif KR', serif;
-    font-size: 1.1rem;
     line-height: 2.5;
   }
   html,
   body,
   #___gatsby {
     height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   a,
   a:hover {
