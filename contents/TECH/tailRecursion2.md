@@ -2,11 +2,11 @@
 date: '2021-12-08'
 title: 'Tail Recursion 2'
 categories: ['Tech']
-summary: '꼬리물기 최적화에 대해 알아보자'
+summary: 'JSON.stringify 구현하기'
 thumbnail: '../images/postBg/tech.png'
 ---
 
-### JSON.stringify 구현하기 ( 평가 전 내 코드 )
+### JSON.stringify 구현하기 ( 개선 전 코드 )
 
 ---
 

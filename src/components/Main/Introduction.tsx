@@ -26,14 +26,14 @@ const Wrapper = styled.div`
     padding: 0 20px;
   }
 `
-const SubTitle = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  color: #ececec;
-  @media (max-width: 768px) {
-    font-size: 15px;
-  }
-`
+// const SubTitle = styled.div`
+//   font-size: 20px;
+//   font-weight: 400;
+//   color: #ececec;
+//   @media (max-width: 768px) {
+//     font-size: 15px;
+//   }
+// `
 
 const Title = styled.div`
   margin-top: 5px;
@@ -53,8 +53,7 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({
       <Wrapper>
         <ProfileImage profileImage={profileImage} />
         <div>
-          <SubTitle>안녕하세요</SubTitle>
-          <Title> 주니어 프론트엔드 개발자 김주영 입니다 </Title>
+          <Title>Juoblog</Title>
         </div>
       </Wrapper>
     </Background>
