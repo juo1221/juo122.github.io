@@ -9,7 +9,7 @@ type IntroductionProps = {
 
 const Background = styled.div`
   width: 100%;
-  background: url('https://source.unsplash.com/category/nature/1600x900?q=80&fm=jpg&fitsss=crop')
+  background: url('https://source.unsplash.com/1600x900/?nature,water')
     center/cover no-repeat;
 `
 const Wrapper = styled.div`
