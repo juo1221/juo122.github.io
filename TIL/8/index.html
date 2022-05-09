@@ -244,9 +244,6 @@
   </a>
     </span></p>
 <p>stateStore라는 객체 저장 공간을 생성한 뒤, key 값으로는 init을 주었다. 이렇게 하면 useState를 사용할 때마다 key 값으로 저장 공간에 값이 저장되기 때문에 독립적으로 이용할 수 있게 된다.</p>
-<div align="center">
-   <img src="/e5c8c36cdff5cb3e552d5f1c16d5e224/useState3.gif" alt="ezgif.com-gif-maker (14)" width="50%">
-<div></div></div>
 <p>하지만 한 가지 문제가 있다. 바로 key 값이 고유하지 않다는 것인데, 현재는 key를 useState의 초기값인 init으로 주었기 때문에 다른 곳에서 같은 init으로 useState를 생성하게 되면 겹치는 문제가 생긴다.</p>
 <p>이를 해결하기 위해 초기값이 아닌 고유한 값으로 key를 설정할 필요가 있다.</p>
 <p><span
@@ -555,6 +552,6 @@
     </span></p>
 <p>f1의 생명주기가 끝났음에도 불구하고 그 안에서 선언된 name 함수는 중첩 함수에서 여전히 이용되고 있는 것을 확인할 수 있다.</p>
 <div align="center">
-   <img src="/5b40833af3c7ed24c3ad51038c9c9e71/useState4.gif" alt="ezgif.com-gif-maker (15)" width="50%">
+   <img src="/e5c8c36cdff5cb3e552d5f1c16d5e224/useState3.gif" alt="ezgif.com-gif-maker (14)" width="50%">
 <div></div></div>
 <p>이제 Array와 boolean 값이 개별적으로 잘 출력되는 것을 확인할 수 있다.</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Have A Nice Day ! 🥳<br/>© 2021 Developer Joo, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL/8/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-ea100fe6f02bbc648246.js"],"app":["/app-1ec2fc3f7109d0ad363b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-8e22c18f79eefece09e6.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-905e26f5b09e2b15cf66.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-149e2d85646558e1938c.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-b329dbc5a4455809334e.js"]};/*]]>*/</script><script src="/polyfill-ea100fe6f02bbc648246.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-b329dbc5a4455809334e.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a7a0888803f57fa30e9d.js" async=""></script><script src="/cb1608f2-3d1f96b69f7c4498694b.js" async=""></script><script src="/app-1ec2fc3f7109d0ad363b.js" async=""></script><script src="/framework-094b0089736b8f621f0d.js" async=""></script><script src="/webpack-runtime-569dfd1bec28da910c40.js" async=""></script></body></html>
