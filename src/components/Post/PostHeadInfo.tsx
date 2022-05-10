@@ -52,6 +52,7 @@ const Title = styled.div`
   -webkit-box-orient: vertical;
   font-size: 45px;
   font-weight: 800;
+  font-family: KOTRA_BOLD;
   @media (max-width: 768px) {
     font-size: 30px;
   }

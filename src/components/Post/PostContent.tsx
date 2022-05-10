@@ -20,7 +20,7 @@ const MarkdownRenderer = styled.div`
   p {
     padding: 3px 0;
     color: #434343;
-    font-family: Georgia;
+    font-family: KOPUBWORLD DOTUM MEDIUM;
   }
 
   // Adjust Heading Element Style
