@@ -16,7 +16,6 @@ const MarkdownRenderer = styled.div`
 
   // Markdown Style
   font-size: 1rem;
-
   // Apply Padding Attribute to All Elements
   p {
     padding: 3px 0;
@@ -93,8 +92,17 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Link Element Style
   a {
-    color: #4263eb;
-    text-decoration: underline;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #12b886;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:before {
+      content: '🔗 ';
+    }
+    &:hover {
+      color: black;
+    }
   }
 
   // Adjust strong Element Style
