@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-template-tsx",
+    "path": "/TIL/9/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"html":"","frontmatter":{"title":"컴포넌트 재사용하기와 HOC","summary":"어떻게 해야 컴포넌트를 재사용할 수 있을까?","date":"2022.05.10.","categories":["TIL","React"],"thumbnail":{"childImageSharp":{"gatsbyImageData":{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png","srcSet":"/static/b3221240861b7e5156657631edc409d2/2fe1e/TIL.png 480w,\n/static/b3221240861b7e5156657631edc409d2/9bec7/TIL.png 960w,\n/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png 1920w","sizes":"(min-width: 1920px) 1920px, 100vw"},"sources":[{"srcSet":"/static/b3221240861b7e5156657631edc409d2/3a3a2/TIL.webp 480w,\n/static/b3221240861b7e5156657631edc409d2/bde8a/TIL.webp 960w,\n/static/b3221240861b7e5156657631edc409d2/c512e/TIL.webp 1920w","type":"image/webp","sizes":"(min-width: 1920px) 1920px, 100vw"}]},"width":1920,"height":1080}},"publicURL":"/static/b3221240861b7e5156657631edc409d2/TIL.png"}}}}]}},"pageContext":{"slug":"/TIL/9/"}},
+    "staticQueryHashes": []}
