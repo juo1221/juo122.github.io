@@ -1,1 +1,468 @@
-<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.e53586a225ffdde20c86.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.14.3"/><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700|Noto+Sans+Korean:100,300,400,500,700,900&amp;display=swap" rel="stylesheet"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://juo1221.github.io/TIL/9/" data-baseprotocol="https:" data-basehost="juo1221.github.io"/><title data-react-helmet="true">컴포넌트 재사용하기와 HOC</title><meta data-react-helmet="true" name="description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="컴포넌트 재사용하기와 HOC"/><meta data-react-helmet="true" property="og:description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" property="og:image" content="/static/b3221240861b7e5156657631edc409d2/TIL.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="컴포넌트 재사용하기와 HOC"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="컴포넌트 재사용하기와 HOC"/><meta data-react-helmet="true" name="twitter:description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" name="twitter:image" content="/static/b3221240861b7e5156657631edc409d2/TIL.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><meta data-react-helmet="true" name="google-site-verification" content="42hTu4U3cOg2QhFYnYyeUcZE79anv_LVwntmBWA_QC8"/><meta data-react-helmet="true" name="naver-site-verification" content="a5017e3e33d94abfe65cd06470e131855e193af1"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-569dfd1bec28da910c40.js"/><link as="script" rel="preload" href="/framework-094b0089736b8f621f0d.js"/><link as="script" rel="preload" href="/app-1ec2fc3f7109d0ad363b.js"/><link as="script" rel="preload" href="/cb1608f2-3d1f96b69f7c4498694b.js"/><link as="script" rel="preload" href="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a7a0888803f57fa30e9d.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-b329dbc5a4455809334e.js"/><link as="fetch" rel="preload" href="/page-data/TIL/9/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><main class="css-zyllbl e1strnqo0"><style data-emotion="css-global ekx1ld">@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Noto Serif KR',serif;line-height:2.5;}html,body,#___gatsby{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1920px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;1080&#x27; width=&#x27;1920&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/b3221240861b7e5156657631edc409d2/3a3a2/TIL.webp 480w,/static/b3221240861b7e5156657631edc409d2/bde8a/TIL.webp 960w,/static/b3221240861b7e5156657631edc409d2/c512e/TIL.webp 1920w" sizes="(min-width: 1920px) 1920px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1920px) 1920px, 100vw" decoding="async" loading="lazy" data-src="/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png" data-srcset="/static/b3221240861b7e5156657631edc409d2/2fe1e/TIL.png 480w,/static/b3221240861b7e5156657631edc409d2/9bec7/TIL.png 960w,/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png 1920w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/b3221240861b7e5156657631edc409d2/3a3a2/TIL.webp 480w,/static/b3221240861b7e5156657631edc409d2/bde8a/TIL.webp 960w,/static/b3221240861b7e5156657631edc409d2/c512e/TIL.webp 1920w" sizes="(min-width: 1920px) 1920px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1920px) 1920px, 100vw" decoding="async" loading="lazy" src="/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png" srcSet="/static/b3221240861b7e5156657631edc409d2/2fe1e/TIL.png 480w,/static/b3221240861b7e5156657631edc409d2/9bec7/TIL.png 960w,/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png 1920w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1)}}</script></div><style data-emotion="css hrirzy">.css-hrirzy{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:400px;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-hrirzy{width:100%;padding:40px 20px;}}</style><div class="css-hrirzy e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">컴포넌트 재사용하기와 HOC</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>TIL / React</div><div>2022.05.10.</div></div></div></div><style data-emotion="css 14tmx39">.css-14tmx39{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:700px;margin:0 auto;padding:100px 0;word-break:break-all;font-size:1rem;}.css-14tmx39 p{padding:3px 0;color:#434343;font-family:Georgia;}.css-14tmx39 h1,.css-14tmx39 h2,.css-14tmx39 h3{font-weight:800;margin-bottom:30px;}.css-14tmx39 *+h1,.css-14tmx39 *+h2,.css-14tmx39 *+h3{margin-top:60px;}.css-14tmx39 hr+h1,.css-14tmx39 hr+h2,.css-14tmx39 hr+h3{margin-top:10px;}.css-14tmx39 h1+hr,.css-14tmx39 h2+hr,.css-14tmx39 h3+hr{margin-top:-30px;}.css-14tmx39 h1{font-family:sans-serif;color:#434343;font-size:30px;}.css-14tmx39 h2{font-family:sans-serif;color:#434343;font-size:25px;}.css-14tmx39 h3{font-family:sans-serif;color:#434343;font-size:20px;}.css-14tmx39 blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #9c2222;font-weight:800;}.css-14tmx39 ol,.css-14tmx39 ul{margin-left:40px;padding:10px;}.css-14tmx39 hr{border-color:#ffffff44;}.css-14tmx39 hr+*{margin-top:30px;}.css-14tmx39 a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-14tmx39 strong{color:#e08728;}.css-14tmx39 em{display:block;text-align:center;font-size:1rem;color:light-grey;}.css-14tmx39 pre[class*='language-']{margin:30px 0;padding:15px;font-size:13px;border-radius:3px;}.css-14tmx39 pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-14tmx39 code[class*='language-'],.css-14tmx39 pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-14tmx39{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-14tmx39 h1{font-size:23px;}.css-14tmx39 h2{font-size:20px;}.css-14tmx39 h3{font-size:17px;}.css-14tmx39 img{width:100%;}}</style><div class="css-14tmx39 e1ijh0y10"></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Have A Nice Day ! 🥳<br/>© 2021 Developer Joo, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL/9/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-ea100fe6f02bbc648246.js"],"app":["/app-1ec2fc3f7109d0ad363b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-8e22c18f79eefece09e6.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-905e26f5b09e2b15cf66.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-149e2d85646558e1938c.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-b329dbc5a4455809334e.js"]};/*]]>*/</script><script src="/polyfill-ea100fe6f02bbc648246.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-b329dbc5a4455809334e.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a7a0888803f57fa30e9d.js" async=""></script><script src="/cb1608f2-3d1f96b69f7c4498694b.js" async=""></script><script src="/app-1ec2fc3f7109d0ad363b.js" async=""></script><script src="/framework-094b0089736b8f621f0d.js" async=""></script><script src="/webpack-runtime-569dfd1bec28da910c40.js" async=""></script></body></html>
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.e53586a225ffdde20c86.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.14.3"/><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700|Noto+Sans+Korean:100,300,400,500,700,900&amp;display=swap" rel="stylesheet"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://juo1221.github.io/TIL/9/" data-baseprotocol="https:" data-basehost="juo1221.github.io"/><title data-react-helmet="true">컴포넌트 재사용하기와 HOC, + 커링</title><meta data-react-helmet="true" name="description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="컴포넌트 재사용하기와 HOC, + 커링"/><meta data-react-helmet="true" property="og:description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" property="og:image" content="/static/b3221240861b7e5156657631edc409d2/TIL.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="컴포넌트 재사용하기와 HOC, + 커링"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="컴포넌트 재사용하기와 HOC, + 커링"/><meta data-react-helmet="true" name="twitter:description" content="어떻게 해야 컴포넌트를 재사용할 수 있을까?"/><meta data-react-helmet="true" name="twitter:image" content="/static/b3221240861b7e5156657631edc409d2/TIL.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><meta data-react-helmet="true" name="google-site-verification" content="42hTu4U3cOg2QhFYnYyeUcZE79anv_LVwntmBWA_QC8"/><meta data-react-helmet="true" name="naver-site-verification" content="a5017e3e33d94abfe65cd06470e131855e193af1"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-525abdf8add91663956b.js"/><link as="script" rel="preload" href="/framework-094b0089736b8f621f0d.js"/><link as="script" rel="preload" href="/app-1ec2fc3f7109d0ad363b.js"/><link as="script" rel="preload" href="/cb1608f2-3d1f96b69f7c4498694b.js"/><link as="script" rel="preload" href="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a7a0888803f57fa30e9d.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-721e36739661ee204256.js"/><link as="fetch" rel="preload" href="/page-data/TIL/9/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><main class="css-zyllbl e1strnqo0"><style data-emotion="css-global ekx1ld">@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Noto Serif KR',serif;line-height:2.5;}html,body,#___gatsby{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1920px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;1080&#x27; width=&#x27;1920&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/b3221240861b7e5156657631edc409d2/3a3a2/TIL.webp 480w,/static/b3221240861b7e5156657631edc409d2/bde8a/TIL.webp 960w,/static/b3221240861b7e5156657631edc409d2/c512e/TIL.webp 1920w" sizes="(min-width: 1920px) 1920px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1920px) 1920px, 100vw" decoding="async" loading="lazy" data-src="/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png" data-srcset="/static/b3221240861b7e5156657631edc409d2/2fe1e/TIL.png 480w,/static/b3221240861b7e5156657631edc409d2/9bec7/TIL.png 960w,/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png 1920w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/b3221240861b7e5156657631edc409d2/3a3a2/TIL.webp 480w,/static/b3221240861b7e5156657631edc409d2/bde8a/TIL.webp 960w,/static/b3221240861b7e5156657631edc409d2/c512e/TIL.webp 1920w" sizes="(min-width: 1920px) 1920px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1920px) 1920px, 100vw" decoding="async" loading="lazy" src="/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png" srcSet="/static/b3221240861b7e5156657631edc409d2/2fe1e/TIL.png 480w,/static/b3221240861b7e5156657631edc409d2/9bec7/TIL.png 960w,/static/b3221240861b7e5156657631edc409d2/afa5c/TIL.png 1920w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1)}}</script></div><style data-emotion="css hrirzy">.css-hrirzy{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:400px;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-hrirzy{width:100%;padding:40px 20px;}}</style><div class="css-hrirzy e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></div><style data-emotion="css 1se48il">.css-1se48il{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;font-family:KOTRA_BOLD;}@media (max-width: 768px){.css-1se48il{font-size:30px;}}</style><div class="css-1se48il e1st1jau1">컴포넌트 재사용하기와 HOC, + 커링</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>TIL / React</div><div>2022.05.10.</div></div></div></div><style data-emotion="css aq2x5y">.css-aq2x5y{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:700px;margin:0 auto;padding:100px 0;word-break:break-all;font-size:1rem;}.css-aq2x5y p{padding:3px 0;color:#434343;font-family:KOPUBWORLD DOTUM MEDIUM;}.css-aq2x5y h1,.css-aq2x5y h2,.css-aq2x5y h3{font-weight:800;margin-bottom:30px;}.css-aq2x5y *+h1,.css-aq2x5y *+h2,.css-aq2x5y *+h3{margin-top:60px;}.css-aq2x5y hr+h1,.css-aq2x5y hr+h2,.css-aq2x5y hr+h3{margin-top:10px;}.css-aq2x5y h1+hr,.css-aq2x5y h2+hr,.css-aq2x5y h3+hr{margin-top:-30px;}.css-aq2x5y h1{font-family:sans-serif;color:#434343;font-size:30px;}.css-aq2x5y h2{font-family:sans-serif;color:#434343;font-size:25px;}.css-aq2x5y h3{font-family:sans-serif;color:#434343;font-size:20px;}.css-aq2x5y blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #9c2222;font-weight:800;}.css-aq2x5y ol,.css-aq2x5y ul{margin-left:40px;padding:10px;}.css-aq2x5y hr{border-color:#ffffff44;}.css-aq2x5y hr+*{margin-top:30px;}.css-aq2x5y a{font-size:1.2rem;font-weight:700;color:#12b886;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}.css-aq2x5y a:before{content:'🔗 ';}.css-aq2x5y a:hover{color:black;}.css-aq2x5y strong{color:#e08728;}.css-aq2x5y em{display:block;text-align:center;font-size:1rem;color:light-grey;}.css-aq2x5y pre[class*='language-']{margin:30px 0;padding:15px;font-size:13px;border-radius:3px;}.css-aq2x5y pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-aq2x5y code[class*='language-'],.css-aq2x5y pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-aq2x5y{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-aq2x5y h1{font-size:23px;}.css-aq2x5y h2{font-size:20px;}.css-aq2x5y h3{font-size:17px;}.css-aq2x5y img{width:100%;}}</style><div class="css-aq2x5y e1ijh0y10"><h1>HOC</h1>
+<hr>
+<p>리액트를 사용하다 보면 중복된 로직을 갖는 컴포넌트가 종종 나온다. 예를 들면 이런 식인데</p>
+<p>A.js 컴포넌트
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/b23a292c44b3d8998872a8d71cbf1baf/de34d/1.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 36.97916666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzElEQVQoz4WQUW6EMAxEOQrgxImTECh0q7Yfvf+tXhW0IFXdZT9GtmzracbdLXvKLaPREOcwM6IZooEQFXFC3/cMw3Cp46YbRiHlhakuTPNMqZUQI6P3aPD/gI/gx6zVrjVL2ljfvlk/f7D6jsaJunxRU2a8Hx56Be1aY2VmWz/w3lA1NCSCTVjKqCrOObzICb+KvjsUEbaUMRGitn9m1CaCJaIlUi4UDTv0GfB0KOKIpaIp46Kdy2d6FPnPD5s7H9MOa3UYx8tYrxz+AnR4xmqvuPM3AAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/b23a292c44b3d8998872a8d71cbf1baf/a59e9/1.webp 192w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/0ca9f/1.webp 384w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/dc9b9/1.webp 768w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/e2c2f/1.webp 1152w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/f3efb/1.webp 1536w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/54a31/1.webp 2042w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/b23a292c44b3d8998872a8d71cbf1baf/3b721/1.png 192w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/66595/1.png 384w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/fe486/1.png 768w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/d2d74/1.png 1152w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/e8464/1.png 1536w,
+/static/b23a292c44b3d8998872a8d71cbf1baf/de34d/1.png 2042w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/b23a292c44b3d8998872a8d71cbf1baf/fe486/1.png" alt="1" title="1" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></p>
+<p>B.js 컴포넌트
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/a067b48f9e12a04f300efdf6a131c4b4/de34d/2.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 39.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5UlEQVQoz4WSy07EMAxF+ydN/IjjPNoJDIxmwf9/1kWNALGgdHGtRLaPHN8sj02RRwKxgIggImCReWdhRIoIISDG+K++axazhDIG+n6D14pt3+GlgC0jlwRR+Sk+A//OL5EIw+8Y44n78wO5DahV1PaKYnbafDrhcdhv79jHA+ob1AqSVZT2guoOYca6rlhDuJx0Ao+QLOOtdbgkuDUk70i5I9c219B6R0824Vf7XA4jVBWuCRwJTAxmBYtOc5h5SohA8dqgRVShXsHZIeaIkRDCOhv/0uWTmWWCdALzFzBcfo8z4CctpOI6e7hhNwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/a067b48f9e12a04f300efdf6a131c4b4/a59e9/2.webp 192w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/0ca9f/2.webp 384w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/dc9b9/2.webp 768w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/e2c2f/2.webp 1152w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/f3efb/2.webp 1536w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/54a31/2.webp 2042w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/a067b48f9e12a04f300efdf6a131c4b4/3b721/2.png 192w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/66595/2.png 384w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/fe486/2.png 768w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/d2d74/2.png 1152w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/e8464/2.png 1536w,
+/static/a067b48f9e12a04f300efdf6a131c4b4/de34d/2.png 2042w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/a067b48f9e12a04f300efdf6a131c4b4/fe486/2.png" alt="2" title="2" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span>
+<br/></p>
+<p>A 컴포넌트와 B 컴포넌트는 onClick의 핸들러 함수 이외에 다른 차이점이 없다.</p>
+<p>아주 약간의 다른 점 때문에 전체 코드를 다시 작성해야 하는 불편함을 어떤 식으로 해소할 수 있을지 찾아보았다.</p>
+<p>그러던 중 <strong>HOC (higher order component)</strong> 라는 개념에 대해 알게 됐다. HOC란 컴포넌트를 인자로 받아 새로운 컴포넌트로 반환하는 컴포넌트임을 의미한다. HOC를 사용해서 위 중복 로직을 제거하고 컴포넌트를 재사용해 보자.</p>
+<p>먼저 컴포넌트를 인자로 받기 위한 HOC 컴포넌트를 새로 생성한다. HOC 컴포넌트는 기존 컴포넌트와의 차이를 위해 이름에 with을 붙인다고 한다.</p>
+<br/>
+<p>withCounter.js 컴포넌트
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/2f84910b372974322fdd7f45a8e8dcd6/5dea3/3.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 43.22916666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9klEQVQoz5WR6W7CMBCE8yjxvb7jXC2tVFDf/52msiERgtLCj9GspdWn2XFHgwJjHJwzCCHQM9ZU36zOfd/8P217XSwLcplhQ8G0vqHMM9JY4JNvYPYEcINV7xINmKcv5OWEOH3i4/iN9f2I4C/AF2AtoZEGOSzw5QAbR5AdkMoBOWcYJc+Lfd/8N22wHSiUggup9cc5P+tqrv22jqvvb3aZ7zvu6sI6FkxJI3kJZwzIBZC2sBShbYShAGcCyCVoilDGIKQELuQ9UGoDpTSEUC3Rs7/6uMOYQbGAwtjScC4e9vVXh3tC7QKUdZCa2jlS25dS3p78A/HX/4oRcO2wAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/2f84910b372974322fdd7f45a8e8dcd6/a59e9/3.webp 192w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/0ca9f/3.webp 384w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/dc9b9/3.webp 768w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/e2c2f/3.webp 1152w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/f3efb/3.webp 1536w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/18d98/3.webp 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/2f84910b372974322fdd7f45a8e8dcd6/3b721/3.png 192w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/66595/3.png 384w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/fe486/3.png 768w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/d2d74/3.png 1152w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/e8464/3.png 1536w,
+/static/2f84910b372974322fdd7f45a8e8dcd6/5dea3/3.png 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/2f84910b372974322fdd7f45a8e8dcd6/fe486/3.png" alt="3" title="3" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span>
+<br/></p>
+<p>withCounter 컴포넌트 내부에 WrapperComponent를 반환하는 함수를 선언한다.
+그리고 해당 함수에서 중복 로직을 정의해 주었다. 이제 A와 B 컴포넌트를 보면</p>
+<p>A.js 컴포넌트
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/9b2ecc9e09251b24a8294bdcfed829d3/5dea3/4.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 32.8125%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAy0lEQVQoz42RW26EMAxF2QlJnMR5MTAdBKhS97+sU0FVNP3oMB9XtmT76NrufPVY47DO4b1gnRy5dRZjLdYa7BFfy5ifvm76/GJZV+Z1Y5oX6jRyX260sWCsO4G/A69ge+w+xo3psTBvK7k2okZqK0fxWe9Cu9v4YNhBUUkpoymRcsGJIN7jRXAXsGd1GgKTJlQU1UIbGrkNpFIorTGkRBR/CTwdah0QTbigiI84CUex7/tTVyv/uWHIlZAyQQtBK1Ezbv/yP0NXDr8B1+jGIsALxc0AAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/9b2ecc9e09251b24a8294bdcfed829d3/a59e9/4.webp 192w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/0ca9f/4.webp 384w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/dc9b9/4.webp 768w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/e2c2f/4.webp 1152w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/f3efb/4.webp 1536w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/18d98/4.webp 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/9b2ecc9e09251b24a8294bdcfed829d3/3b721/4.png 192w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/66595/4.png 384w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/fe486/4.png 768w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/d2d74/4.png 1152w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/e8464/4.png 1536w,
+/static/9b2ecc9e09251b24a8294bdcfed829d3/5dea3/4.png 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/9b2ecc9e09251b24a8294bdcfed829d3/fe486/4.png" alt="4" title="4" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></p>
+<p>B.js 컴포넌트
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/ea1e953f7bbead1707751c3733c6a42f/5dea3/5.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 34.895833333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzUlEQVQoz42RWW7DMAwFfZJoJbXEcu3EdRug97/WBHIRtP1I6o8RCeFpAFLDNgtxVIKPhBiJIvjQ+4DzDmstzrl/6TnvPYPkwvz5xcftxnXbmC5XznNj2RqS9I/wmfxx3+sQg/A2rkzLyuV9JZVCLgURwZxOe+jBEelgnaNNC61UVBKlnne6WFTRTggvZb8Z+lE00TQRvZBSptRKygXNmZwzKcbjwhCFIIoLYf8M7/tjjzEGa8xezYGRf4QiaB2/ySOpTGiuOGef7umV8A7dEMYG1at66QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/ea1e953f7bbead1707751c3733c6a42f/a59e9/5.webp 192w,
+/static/ea1e953f7bbead1707751c3733c6a42f/0ca9f/5.webp 384w,
+/static/ea1e953f7bbead1707751c3733c6a42f/dc9b9/5.webp 768w,
+/static/ea1e953f7bbead1707751c3733c6a42f/e2c2f/5.webp 1152w,
+/static/ea1e953f7bbead1707751c3733c6a42f/f3efb/5.webp 1536w,
+/static/ea1e953f7bbead1707751c3733c6a42f/18d98/5.webp 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/ea1e953f7bbead1707751c3733c6a42f/3b721/5.png 192w,
+/static/ea1e953f7bbead1707751c3733c6a42f/66595/5.png 384w,
+/static/ea1e953f7bbead1707751c3733c6a42f/fe486/5.png 768w,
+/static/ea1e953f7bbead1707751c3733c6a42f/d2d74/5.png 1152w,
+/static/ea1e953f7bbead1707751c3733c6a42f/e8464/5.png 1536w,
+/static/ea1e953f7bbead1707751c3733c6a42f/5dea3/5.png 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/ea1e953f7bbead1707751c3733c6a42f/fe486/5.png" alt="5" title="5" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span>
+<br/></p>
+<p>A와 B는 이제 필요한 함수를 props로 전달받아서 이용할 수 있게 됐다.</p>
+<p>조금 더 나아가서 컴포넌트 이름을 App 단에서 정의하고 싶을 경우도 생각해 볼 수 있다.</p>
+<p>App.js
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/8617b9abe5ee2393566da849b3605ffe/5dea3/6.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 22.395833333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZElEQVQY06VP2wqAMBTan5xj284GtaIa/f+fGQsKeuvyoCKIqFtLYh56hpipAEWEqkoAlz7BmXXoApd54ziutGyMKRLoPpU1dY1yMtapcqqFZR4IH14V3hZ6H2jRDtPuiuivyzu7QW/zV6+jZAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/8617b9abe5ee2393566da849b3605ffe/a59e9/6.webp 192w,
+/static/8617b9abe5ee2393566da849b3605ffe/0ca9f/6.webp 384w,
+/static/8617b9abe5ee2393566da849b3605ffe/dc9b9/6.webp 768w,
+/static/8617b9abe5ee2393566da849b3605ffe/e2c2f/6.webp 1152w,
+/static/8617b9abe5ee2393566da849b3605ffe/f3efb/6.webp 1536w,
+/static/8617b9abe5ee2393566da849b3605ffe/18d98/6.webp 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/8617b9abe5ee2393566da849b3605ffe/3b721/6.png 192w,
+/static/8617b9abe5ee2393566da849b3605ffe/66595/6.png 384w,
+/static/8617b9abe5ee2393566da849b3605ffe/fe486/6.png 768w,
+/static/8617b9abe5ee2393566da849b3605ffe/d2d74/6.png 1152w,
+/static/8617b9abe5ee2393566da849b3605ffe/e8464/6.png 1536w,
+/static/8617b9abe5ee2393566da849b3605ffe/5dea3/6.png 2312w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/8617b9abe5ee2393566da849b3605ffe/fe486/6.png" alt="6" title="6" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></p>
+<p>이런 식으로 정의하게 되면 다음과 같은 흐름으로 name이 각 컴포넌트에 전달된다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/795815a3935108510188e5ee094eb802/221b9/7.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 16.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAwUlEQVQI1x3Fy0rDQBSA4TyMRqdmMnPOTC6k1YQkNIngwguC2zbgWkGol3f/hS4+vmS5f2CZF8a+ZR5H3p5faHc9u7uBru0pVVCXE0RI05R1Xfn7+WVbNXTbhtumoaprVBXnHEmeZQSveH/DxmZMy0IsIt5ZnPNnPncEL5jLC96PB74+Pwh5TlXUSIhYazHGsDGGZNhP9PuZfhiZuo7XxyeqUFLEElWPeoeIJ6hyfZWyHg+cvk94DcSiRDQiqojI+X+Hw2Xjo3vuwwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/795815a3935108510188e5ee094eb802/a59e9/7.webp 192w,
+/static/795815a3935108510188e5ee094eb802/0ca9f/7.webp 384w,
+/static/795815a3935108510188e5ee094eb802/dc9b9/7.webp 768w,
+/static/795815a3935108510188e5ee094eb802/e2c2f/7.webp 1152w,
+/static/795815a3935108510188e5ee094eb802/f3efb/7.webp 1536w,
+/static/795815a3935108510188e5ee094eb802/9e3d8/7.webp 3096w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/795815a3935108510188e5ee094eb802/3b721/7.png 192w,
+/static/795815a3935108510188e5ee094eb802/66595/7.png 384w,
+/static/795815a3935108510188e5ee094eb802/fe486/7.png 768w,
+/static/795815a3935108510188e5ee094eb802/d2d74/7.png 1152w,
+/static/795815a3935108510188e5ee094eb802/e8464/7.png 1536w,
+/static/795815a3935108510188e5ee094eb802/221b9/7.png 3096w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/795815a3935108510188e5ee094eb802/fe486/7.png" alt="7" title="7" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>화면에서 출력해 보면</p>
+<h1><img src="/71ac5c0906560f76eb927f2372d66df1/8.gif"></h1>
+<p>A와 B 모두 잘 출력되는 것을 확인할 수 있다. 이렇게 HOC를 이용해 하나의 컴포넌트를 재사용해 A와 B의 중복된 로직을 제거할 수 있었다.</p>
+<p>HOC를 검색하다 관련 주제로 <strong>커링 (curring)</strong> 이라는 개념을 접하게 되었는데 커링은 어떤 것일까?</p>
+<h1>커링</h1>
+<hr>
+<p>커링의 정의는 <strong>다중 인수을 갖는 함수를 단일 인수를 갖는 함수들의 함수열로 바꾸는 것</strong> 으로 나와있다. 즉 내부에 인자를 받는 함수로 만들어 리턴하면 된다.</p>
+<p>예를 들면 다음과 같이 특정 학교의 반에 있는 학생의 점수를 얻는 함수가 있다고 해보자.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/2751f93b0d52e9ea9e40678b040f5f99/13bda/9.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 17.1875%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAgUlEQVQI132OSw7CMBDFepTmM8kkkzRNgXL/kxmpsEKChWW9jfWWWxVsVKIYkpVSK1kVLUo1QyTjvb9wzuE+Xtf1vb9YfIjMeWebT2rrjGNyPE5sM47zpI9BUqFtg7Hv1Nau+M9gDJGqhjVDtJFKx3omSCBIvAK5JKw1ihlR0t+HLxrLVt3gmhh8AAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/2751f93b0d52e9ea9e40678b040f5f99/a59e9/9.webp 192w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/0ca9f/9.webp 384w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/dc9b9/9.webp 768w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/e2c2f/9.webp 1152w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/f3efb/9.webp 1536w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/bc5d9/9.webp 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/2751f93b0d52e9ea9e40678b040f5f99/3b721/9.png 192w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/66595/9.png 384w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/fe486/9.png 768w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/d2d74/9.png 1152w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/e8464/9.png 1536w,
+/static/2751f93b0d52e9ea9e40678b040f5f99/13bda/9.png 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/2751f93b0d52e9ea9e40678b040f5f99/fe486/9.png" alt="9" title="9" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>위 함수를 출력하면 결과는 잘 나오지만 아쉬운 점이 한 가지 있는데, 정상적인 출력값을 얻으려면 모든 인자를 항상 보내줘야 한다는 점이다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/341e84e1e11dff38ea93964382407722/13bda/10.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 25.520833333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzUlEQVQY032Qy26DMBRE8ydgc43x49pASQJqo7Rd9P//6FTxrlLFYnRmdTSayz07puIwRrCDIPKiZRBpsXbAGEPf93Rd12j6vrF1Y/7k4kRYlg2dd6Iqy7aybjd0Llz3Ay0VGYWQlaxKiAlr7b+yJhwGR04VLQUflOnV59gkbvLkUgjJo7W0jFPAmBOhG0b2tw+e31/U64N1/+F4btRNCTlwPD5ZbzP3953bcZCW2q45WSjEKbeFY8j4OBM14MOIOCFlbT2mSEgJ5/3pwl/DspI1fySWhQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/341e84e1e11dff38ea93964382407722/a59e9/10.webp 192w,
+/static/341e84e1e11dff38ea93964382407722/0ca9f/10.webp 384w,
+/static/341e84e1e11dff38ea93964382407722/dc9b9/10.webp 768w,
+/static/341e84e1e11dff38ea93964382407722/e2c2f/10.webp 1152w,
+/static/341e84e1e11dff38ea93964382407722/f3efb/10.webp 1536w,
+/static/341e84e1e11dff38ea93964382407722/bc5d9/10.webp 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/341e84e1e11dff38ea93964382407722/3b721/10.png 192w,
+/static/341e84e1e11dff38ea93964382407722/66595/10.png 384w,
+/static/341e84e1e11dff38ea93964382407722/fe486/10.png 768w,
+/static/341e84e1e11dff38ea93964382407722/d2d74/10.png 1152w,
+/static/341e84e1e11dff38ea93964382407722/e8464/10.png 1536w,
+/static/341e84e1e11dff38ea93964382407722/13bda/10.png 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/341e84e1e11dff38ea93964382407722/fe486/10.png" alt="10" title="10" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>같은 학교와 반의 학생에 대한 정보를 얻는데도 매번 같은 인자를 보내야 한다. 왜냐하면 함수는 한번 호출되면 자신이 실행되었던 환경을 모두 잊어버리기 때문이다. 커링을 사용해서 위 함수를 개선해 보자.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/235edb8838bd474451ebf9d2a1e78676/13bda/11.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 34.375%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9ElEQVQoz32PSXaDMBBEuQk0aACEGC2smBCyyf2P9PNwbD9PL4tS9aL6dymZB4OqFFkqZLkgIqRpSpZl/0sEucz7ztUTrRTtYWEMG2E6cVq/6KcZyfNz4Oz7oVzI8/wmuULvYLsn+2Ndw3iY6X2g61umY8R5j7Ya51uq2mIqS9N2tF1H5dwD6KGh0gZT/QWkUJcmQlEUt7BIdjfLC+ReiVKGsh7Qtj577R11U1LWJYVSD9951jtoUpqK0H/iD9/4aWWIP5zWjSmOhBhYtg0/DihjX5bfNjTa0vsjblhwXaQZF0L8oB083dgxx4h1NUrrt4Bn4C+Go8nXg7wQOwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/235edb8838bd474451ebf9d2a1e78676/a59e9/11.webp 192w,
+/static/235edb8838bd474451ebf9d2a1e78676/0ca9f/11.webp 384w,
+/static/235edb8838bd474451ebf9d2a1e78676/dc9b9/11.webp 768w,
+/static/235edb8838bd474451ebf9d2a1e78676/e2c2f/11.webp 1152w,
+/static/235edb8838bd474451ebf9d2a1e78676/f3efb/11.webp 1536w,
+/static/235edb8838bd474451ebf9d2a1e78676/bc5d9/11.webp 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/235edb8838bd474451ebf9d2a1e78676/3b721/11.png 192w,
+/static/235edb8838bd474451ebf9d2a1e78676/66595/11.png 384w,
+/static/235edb8838bd474451ebf9d2a1e78676/fe486/11.png 768w,
+/static/235edb8838bd474451ebf9d2a1e78676/d2d74/11.png 1152w,
+/static/235edb8838bd474451ebf9d2a1e78676/e8464/11.png 1536w,
+/static/235edb8838bd474451ebf9d2a1e78676/13bda/11.png 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/235edb8838bd474451ebf9d2a1e78676/fe486/11.png" alt="11" title="11" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>이제는 이전처럼 학교와 반에 대한 정보를 매번 보내 줄 필요 없이 학생의 정보만 보내주면 된다. 학교 이름과 반에 대한 정보는 처음 getGrade 함수를 실행할 때 고정한 채로 리턴했기 때문이다. 즉 클로저를 이용해 school과 _class를 자유 변수로 만들고 내부 함수에서 기억하는 형태라고 생각할 수 있다.</p>
+<p>ES6 화살표 함수를 이용해 getGrade 함수의 형태를 좀 더 짧게 변형 시킬 수 있다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/b256628a9205e4296154a5c6b3328e43/13bda/12.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 27.604166666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA60lEQVQY032QV27DMBBEfRJRbJZFUWWpYjty+UiA3P9ELxANB0jg5GMw2zCY2V0Uj9IWrQ3WOnSp0cZgzDbTj5k2qKKgKIrMZVnm3ZOf2PqdyEharsRhIs2CjEfSNNGnxDifOK1nQhtpe6Hre2LXYa19Kbbxzh8Cznuc22Odpar3+L3P9cNlmbHd+O3O+5fuvh2GJnFohKoRQjvRDpEQA3Wss4B1LqNUCqVU5n8jL/0bMr/Tjhfk9Mm8fnC535GlY73fOF9XYhKs8z8E/ozcBaHpjhxiohnOtLLkH9axevxSBqpQY6x7GfO3wy8y9q5OskbAwwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/b256628a9205e4296154a5c6b3328e43/a59e9/12.webp 192w,
+/static/b256628a9205e4296154a5c6b3328e43/0ca9f/12.webp 384w,
+/static/b256628a9205e4296154a5c6b3328e43/dc9b9/12.webp 768w,
+/static/b256628a9205e4296154a5c6b3328e43/e2c2f/12.webp 1152w,
+/static/b256628a9205e4296154a5c6b3328e43/f3efb/12.webp 1536w,
+/static/b256628a9205e4296154a5c6b3328e43/bc5d9/12.webp 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/b256628a9205e4296154a5c6b3328e43/3b721/12.png 192w,
+/static/b256628a9205e4296154a5c6b3328e43/66595/12.png 384w,
+/static/b256628a9205e4296154a5c6b3328e43/fe486/12.png 768w,
+/static/b256628a9205e4296154a5c6b3328e43/d2d74/12.png 1152w,
+/static/b256628a9205e4296154a5c6b3328e43/e8464/12.png 1536w,
+/static/b256628a9205e4296154a5c6b3328e43/13bda/12.png 2220w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/b256628a9205e4296154a5c6b3328e43/fe486/12.png" alt="12" title="12" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>일반적으로 커링은 composition 패턴과 같이 이용된다고 하기 때문에 다른 예제로 사용법을 알아보자. composition을 이용하면 쉽게 함수를 조합할 수 있다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/4a980f9994d4f779fc6d301c159ab6bb/8ac3b/13.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 44.27083333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7klEQVQoz5WS3XKEIAxGfROEEIL8LIqO1e1V3/+hvh1t62yn7ehenBvIHEi+NLUIOAi0NmjbFlrrX/x3/ldNw06wrHeEHEBkoJTaL585kz7XNMwOufToYgRZCyLa2QqMMa//UNij1gVv7x8Y5jvmZUW6FUgISDnDeX9J+E1jrUWtE4ZaUYYbfHBQrdpbf2WGh3BruY4T5vWOPM1IpWAYR8SUfkivyhtiRu4HlL4HiQeLR8wJTuQzIH0toGOGXgJCzHDdJknouggyBq1qYbSB2cL54ky2pyxOEGOGDwnMAmEHsQwmOrCGwIb2B8529QEpb/7lq7a8AAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/4a980f9994d4f779fc6d301c159ab6bb/a59e9/13.webp 192w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/0ca9f/13.webp 384w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/dc9b9/13.webp 768w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/e2c2f/13.webp 1152w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/f3efb/13.webp 1536w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/1c319/13.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/4a980f9994d4f779fc6d301c159ab6bb/3b721/13.png 192w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/66595/13.png 384w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/fe486/13.png 768w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/d2d74/13.png 1152w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/e8464/13.png 1536w,
+/static/4a980f9994d4f779fc6d301c159ab6bb/8ac3b/13.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/4a980f9994d4f779fc6d301c159ab6bb/fe486/13.png" alt="13" title="13" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>위 코드에서 changeUserData 함수는 user 객체를 받아 fullName과 주소를 추가하고 first, last Name은 지우는 역할을 하고 있다.
+만약 해당 함수를 이용할 때 특정 조건일 경우엔 주소를 추가하고 싶지 않다면 어떻게 할 수 있을까?</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/9bfef9912c097d7ed2562a30de0b5729/8ac3b/14.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 35.416666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyklEQVQoz5WRWWrDQBBE5ySWZtHsGs1oiXBy/3M9I4OMIeAoH49u6KIoqsWaLX5MOF8YfMKHiHMepTXGGLTW9H2PlPIjp0b0UlPLwv79Q1022rKS8oiPiZQzLoQ/Dc/7McWxjGVi/doZy0hIDqUl3e1G13VPTvEn41dCqRQhJqbaSKWQxsxgB4wZfomvII6Opjaz3+/EthKnxrpt1Hl+pfsPQhuDDQnrPFJplDbPw2H23s3VlMJZT60zeVqIuZFTIfmAVZrh4offDR+HxcbtdPRdIgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/9bfef9912c097d7ed2562a30de0b5729/a59e9/14.webp 192w,
+/static/9bfef9912c097d7ed2562a30de0b5729/0ca9f/14.webp 384w,
+/static/9bfef9912c097d7ed2562a30de0b5729/dc9b9/14.webp 768w,
+/static/9bfef9912c097d7ed2562a30de0b5729/e2c2f/14.webp 1152w,
+/static/9bfef9912c097d7ed2562a30de0b5729/f3efb/14.webp 1536w,
+/static/9bfef9912c097d7ed2562a30de0b5729/1c319/14.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/9bfef9912c097d7ed2562a30de0b5729/3b721/14.png 192w,
+/static/9bfef9912c097d7ed2562a30de0b5729/66595/14.png 384w,
+/static/9bfef9912c097d7ed2562a30de0b5729/fe486/14.png 768w,
+/static/9bfef9912c097d7ed2562a30de0b5729/d2d74/14.png 1152w,
+/static/9bfef9912c097d7ed2562a30de0b5729/e8464/14.png 1536w,
+/static/9bfef9912c097d7ed2562a30de0b5729/8ac3b/14.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/9bfef9912c097d7ed2562a30de0b5729/fe486/14.png" alt="14" title="14" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>이렇게 if 문을 사용해서 함수 내부에 조건을 거는 방법이 있다. <strong>그렇다면 이것의 문제점은 무엇일까?</strong>
+만약 요구사항이 추가돼서 user.id가 1,3,5일 경우 주소를 추가하지 않으려 하고 user.id 9는 fullName을 추가하고 싶지 않아 한다.</p>
+<p>요구사항을 해결하기 위해 <strong>기존에 작성했던 함수의 내부 로직을 아래와 같이 다시 건드려야 한다.</strong></p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/4d4d7c888c78515b58d05bf197a853dc/8ac3b/15.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 33.854166666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuElEQVQoz52RSQ7CMAxFcxI6xU4zuSVFnVhw/1N9lDIIkBDD4ssLy0/vy6oVC00ODbXQRKgbjaIoLtntUJYlqqq6z3e57VX0e8zHE4ZxQZcGRBG4EGFaiyACTfw1LE/FxiDEAOs9gnQbiIhBzGA2qJvmI/DJ0HvBNGe7hHTo4aLbqm9gTV/VfYzKhyIdXIywwYMNI1tnyC2/QJX0PeZ1hRwm2D4hDQPGZXmq+pOhbh2Ir0Z/fPcVeAZheMbSSWsAVAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/4d4d7c888c78515b58d05bf197a853dc/a59e9/15.webp 192w,
+/static/4d4d7c888c78515b58d05bf197a853dc/0ca9f/15.webp 384w,
+/static/4d4d7c888c78515b58d05bf197a853dc/dc9b9/15.webp 768w,
+/static/4d4d7c888c78515b58d05bf197a853dc/e2c2f/15.webp 1152w,
+/static/4d4d7c888c78515b58d05bf197a853dc/f3efb/15.webp 1536w,
+/static/4d4d7c888c78515b58d05bf197a853dc/1c319/15.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/4d4d7c888c78515b58d05bf197a853dc/3b721/15.png 192w,
+/static/4d4d7c888c78515b58d05bf197a853dc/66595/15.png 384w,
+/static/4d4d7c888c78515b58d05bf197a853dc/fe486/15.png 768w,
+/static/4d4d7c888c78515b58d05bf197a853dc/d2d74/15.png 1152w,
+/static/4d4d7c888c78515b58d05bf197a853dc/e8464/15.png 1536w,
+/static/4d4d7c888c78515b58d05bf197a853dc/8ac3b/15.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/4d4d7c888c78515b58d05bf197a853dc/fe486/15.png" alt="15" title="15" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>만약 또 요구사항이 바뀌면 다시 작성했던 함수를 고쳐야하고, 이렇게 고쳐야하는 함수가 1개가 아니라 몇 십 몇 백개라고 하면
+일일히 찾아다니면서 수정해야하는 수고스러움이 들게 된다. 그중엔 반드시 실수도 일어날 수 있다.</p>
+<p>따라서 함수의 기능을 분리하고 조합을 이용해 다시 작성해 보자.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/dd7bbce7ecd17946ae0f371d720d2e21/8ac3b/16.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 33.854166666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVQoz52RS4rDMBAFfRJbkvV1y5I/mcyEQHL/U1WwSQKzGcZZPGrTFO/RTSwJ6wZ6F3DOYYyh67o9Sim01m/+lddNsyxflHklSabUSsojgwgyjmhtDsk2NiKFKBM+5l0U04C1Dmvtv9v9alj3doIPPc5bVKdo2/bw5FeanCdyXZE6I6XgQ8SHcFj0Fk7zyvV2Z/q+ktczy+nE+eeC6fvPhDYmnPeo7bPPqRs/mbsJH94IxeG2ScYEAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/dd7bbce7ecd17946ae0f371d720d2e21/a59e9/16.webp 192w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/0ca9f/16.webp 384w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/dc9b9/16.webp 768w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/e2c2f/16.webp 1152w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/f3efb/16.webp 1536w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/1c319/16.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/dd7bbce7ecd17946ae0f371d720d2e21/3b721/16.png 192w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/66595/16.png 384w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/fe486/16.png 768w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/d2d74/16.png 1152w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/e8464/16.png 1536w,
+/static/dd7bbce7ecd17946ae0f371d720d2e21/8ac3b/16.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/dd7bbce7ecd17946ae0f371d720d2e21/fe486/16.png" alt="16" title="16" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>먼저 함수를 위와 같이 기능별로 분리해 줄 수 있다. 함수당 하나의 역할만 할 수 있도록 최소화해준다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/8f24df3fef0f108be85bfaab7306936f/8ac3b/17.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 10.416666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAATUlEQVQI143MMQ6AMAxD0R4lCSmJW6ou3P9qRkXqDIPl5euV+zqJOVijMxJMNGY2Hu40M4oIVfVzuyuixsBgoDMxXjBiwaB7/QXuZv0D09Y4hLLtkf4AAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/8f24df3fef0f108be85bfaab7306936f/a59e9/17.webp 192w,
+/static/8f24df3fef0f108be85bfaab7306936f/0ca9f/17.webp 384w,
+/static/8f24df3fef0f108be85bfaab7306936f/dc9b9/17.webp 768w,
+/static/8f24df3fef0f108be85bfaab7306936f/e2c2f/17.webp 1152w,
+/static/8f24df3fef0f108be85bfaab7306936f/f3efb/17.webp 1536w,
+/static/8f24df3fef0f108be85bfaab7306936f/1c319/17.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/8f24df3fef0f108be85bfaab7306936f/3b721/17.png 192w,
+/static/8f24df3fef0f108be85bfaab7306936f/66595/17.png 384w,
+/static/8f24df3fef0f108be85bfaab7306936f/fe486/17.png 768w,
+/static/8f24df3fef0f108be85bfaab7306936f/d2d74/17.png 1152w,
+/static/8f24df3fef0f108be85bfaab7306936f/e8464/17.png 1536w,
+/static/8f24df3fef0f108be85bfaab7306936f/8ac3b/17.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/8f24df3fef0f108be85bfaab7306936f/fe486/17.png" alt="17" title="17" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>함수를 조합할 수 있는 compose 함수를 생성해 주었다. compose 함수의 원리는 다음과 같다.</p>
+<p>user 객체 => fns 중 첫 번째 함수의 인자로 user를 넣고 실행 => 반환값을 acc에 할당 => acc를 두 번째 함수에 넣고 실행 => 반환 => … fns가 없을 때까지 반복.</p>
+<p>이렇게 compose를 이용하면 기존 데이터에 기능을 추가해서 원하는 형태로 가공할 수 있다. 이제 compose를 이용해 보자.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/d0673895c7cd2c145030c94c0d10cbb8/8ac3b/18.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 19.270833333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAjUlEQVQY04WOSwrDMBBDc5PMhNqej+M4TQmlkNL7X0olH7qsF0IPLR7qvBpuyRGSIIlCRBFCxDAMYCIQEZj5Yj75T7ooGTpWiBWoZ4g6VA0ickqZQdRfTW1hyQu8vjAub2hZYWXFeN+Q5w02PTE9PkiaQX3flB1CiYZkFeLz0UEc4vvjnfOxh6i/ly3hFyBwcrjW4F9oAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/d0673895c7cd2c145030c94c0d10cbb8/a59e9/18.webp 192w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/0ca9f/18.webp 384w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/dc9b9/18.webp 768w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/e2c2f/18.webp 1152w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/f3efb/18.webp 1536w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/1c319/18.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/d0673895c7cd2c145030c94c0d10cbb8/3b721/18.png 192w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/66595/18.png 384w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/fe486/18.png 768w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/d2d74/18.png 1152w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/e8464/18.png 1536w,
+/static/d0673895c7cd2c145030c94c0d10cbb8/8ac3b/18.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/d0673895c7cd2c145030c94c0d10cbb8/fe486/18.png" alt="18" title="18" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>compose로 함수를 조합해 새로운 함수를 만들었다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/83b1fd4de896af08d987357cb6185ab0/8ac3b/19.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 30.208333333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA0klEQVQY03WR3U6EMBBGeRT6O20pFBaKu5qN8f0f6hhQEkW5OPk6Fz2ZL9Ms2RP6Dh8KEgesj/jQI6ngQ0ZiwUmHUoq2bfc8v3/OjTWeIVfy/GRYPsjTK3l6UJZ38vRGKneG+Yk2dv90cEjOcyNemG+VcV7py0rsbuR+RETQSmP0hkEr9Y3e83LDTVjnlaXeGctCDD19N5JixGmzY7c0ds8v9B/hQRMksC4v1PqgjJUUCykVQoy0p1pXlX8JjTGI8wQvOOv2Tbx1iHX/Vrs6yiH8BKG3rGz3x7iIAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/83b1fd4de896af08d987357cb6185ab0/a59e9/19.webp 192w,
+/static/83b1fd4de896af08d987357cb6185ab0/0ca9f/19.webp 384w,
+/static/83b1fd4de896af08d987357cb6185ab0/dc9b9/19.webp 768w,
+/static/83b1fd4de896af08d987357cb6185ab0/e2c2f/19.webp 1152w,
+/static/83b1fd4de896af08d987357cb6185ab0/f3efb/19.webp 1536w,
+/static/83b1fd4de896af08d987357cb6185ab0/1c319/19.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/83b1fd4de896af08d987357cb6185ab0/3b721/19.png 192w,
+/static/83b1fd4de896af08d987357cb6185ab0/66595/19.png 384w,
+/static/83b1fd4de896af08d987357cb6185ab0/fe486/19.png 768w,
+/static/83b1fd4de896af08d987357cb6185ab0/d2d74/19.png 1152w,
+/static/83b1fd4de896af08d987357cb6185ab0/e8464/19.png 1536w,
+/static/83b1fd4de896af08d987357cb6185ab0/8ac3b/19.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/83b1fd4de896af08d987357cb6185ab0/fe486/19.png" alt="19" title="19" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>이렇게 원하는 함수를 골라 사용할 수 있기 때문에 <strong>이제 기존 함수를 수정하지 않고도 원하는 요구사항을 들어줄 수 있다.</strong></p>
+<p>compose 함수를 reduce 없이 어떻게 만들 수 있을까? 여러 가지 방법이 있겠지만 이렇게 만들 수 있을 것 같다.</p>
+<h1><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/8ac3b/20.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 53.125%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNElEQVQoz52RbU7cMBQAc5Em8Xf8HNvZrLMlIIG4/6EGbaiKQCyF/hhZsvRG8+xurQEbI9ZNeO8JU8S5gFKKcRyP8yd0Rjva9sC63ZElkXIhpYI17v+E2lqmuhDLisz1qPTuvewn4s67wJxXvI/0/S/6fmAYhkPyUfQdcWesI68NP814H0hJiBIJzuL9tbRn6Pu/sn9Ju+AmpliJeUNyI6ZKKo2UG5JX4nxmkorSGvWN4k58opQ75vMjpT0jy858uqe0J9Jyj9Sd0h65bjKMb09xq7iTmGjnjdOpkUsjyomSF4JzmHHEKoVRI1abd9wsnGXmctlp206pG1EWcl4REYzSx7DR+hWl0Qfqa+Hvy35IczkjsSJSmabI+GfoFp+ubIzBW0dw/qhxV653xh4lX/3qZ4UvvHM5+6ka58wAAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/a59e9/20.webp 192w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/0ca9f/20.webp 384w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/dc9b9/20.webp 768w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/e2c2f/20.webp 1152w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/f3efb/20.webp 1536w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/1c319/20.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/3b721/20.png 192w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/66595/20.png 384w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/fe486/20.png 768w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/d2d74/20.png 1152w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/e8464/20.png 1536w,
+/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/8ac3b/20.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/a1f7a8e2bf25e2dce35f1d8916e7afb5/fe486/20.png" alt="20" title="20" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></h1>
+<p>똑같이 잘 작동하는 것을 확인할 수 있다.</p>
+<p>ES5로도 만들어 보았다.
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
+      <a class="gatsby-resp-image-link" href="/static/390388e68c77d368a08edb34a77acf32/8ac3b/21.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 30.208333333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAg0lEQVQY06WPyw6CQBAE90+cWWYfsIDyyPL/X1YGo4l6Ejx0+tKpVLu1j+ShEGJHmwsWEqKKiqB7/xh57p2o5zpWpnljWSspt4hcTsH2dqpCN0wst5lg9rB7Hxw3FCHmzFo3aq2U0h8Cfcd572lCJPUjqe2w3fIfYGOGt/Bx88zlF/AOAgWoW/fiJ/sAAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <picture>
+          <source srcset="/static/390388e68c77d368a08edb34a77acf32/a59e9/21.webp 192w,
+/static/390388e68c77d368a08edb34a77acf32/0ca9f/21.webp 384w,
+/static/390388e68c77d368a08edb34a77acf32/dc9b9/21.webp 768w,
+/static/390388e68c77d368a08edb34a77acf32/e2c2f/21.webp 1152w,
+/static/390388e68c77d368a08edb34a77acf32/f3efb/21.webp 1536w,
+/static/390388e68c77d368a08edb34a77acf32/1c319/21.webp 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/webp">
+          <source srcset="/static/390388e68c77d368a08edb34a77acf32/3b721/21.png 192w,
+/static/390388e68c77d368a08edb34a77acf32/66595/21.png 384w,
+/static/390388e68c77d368a08edb34a77acf32/fe486/21.png 768w,
+/static/390388e68c77d368a08edb34a77acf32/d2d74/21.png 1152w,
+/static/390388e68c77d368a08edb34a77acf32/e8464/21.png 1536w,
+/static/390388e68c77d368a08edb34a77acf32/8ac3b/21.png 2684w" sizes="(max-width: 768px) 100vw, 768px" type="image/png">
+          <img class="gatsby-resp-image-image" src="/static/390388e68c77d368a08edb34a77acf32/fe486/21.png" alt="21" title="21" loading="lazy" decoding="async" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;">
+        </picture>
+  </a>
+    </span></p>
+<br/>
+<br/>
+<h1>정리</h1>
+<hr>
+<p>지금까지 HOC와 커링 &#x26; 컴포지션에 대해 간략하게 알아보았다. HOC를 사용하면 컴포넌트를 쉽게 재사용할 수 있지만 HOC의 복잡성과 디버깅 문제로 인해 최근에는 <strong>custom hook을 이용해 쉽게 컴포넌트를 재사용</strong> 할 수 있다고 한다.</p>
+<p>이번 포스트는 HOC와 커링에 관한 주제이기 때문에 다루지 않고 관련 링크를 남기겠다.</p>
+<p>개인적으로 함수를 조합해서 사용할 수 있다는 점이 굉장히 흥미롭게 느껴졌다. 간단한 토이 프로젝트로 적용해 보고 싶다.</p>
+<h1>참고</h1>
+<hr>
+<h3>블로그</h3>
+<p><a href="https://ko.reactjs.org/docs/higher-order-components.html" target="_blank" rel="nofollow">리액트 공식문서 react-HOC</a></p>
+<p><a href="https://devcore.io/en/react/hocs-vs-hooks-what-to-use-and-why/" target="_blank" rel="nofollow">HOCs vs HOOKs</a></p>
+<p><a href="https://flexiple.com/react/introduction-to-higher-order-components-in-react-by-example/" target="_blank" rel="nofollow">HOC란?</a></p>
+<p><a href="https://ko.javascript.info/currying-partials" target="_blank" rel="nofollow">모던 자바스크립트 - 커링</a></p>
+<h3>유튜브</h3>
+<p><a href="https://www.youtube.com/watch?v=jlLTcYdjo9I&#x26;list=PLEOnZ6GeucBVixAJGEnHvcGjzz1yrTyfO&#x26;index=4&#x26;t=1682s" target="_blank" rel="nofollow">커링과 컴포지션</a></p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Have A Nice Day ! 🥳<br/>© 2021 Developer Joo, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL/9/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-ea100fe6f02bbc648246.js"],"app":["/app-1ec2fc3f7109d0ad363b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-8e22c18f79eefece09e6.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-b3d62f3f8e507184ce83.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-149e2d85646558e1938c.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-721e36739661ee204256.js"]};/*]]>*/</script><script src="/polyfill-ea100fe6f02bbc648246.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-721e36739661ee204256.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a7a0888803f57fa30e9d.js" async=""></script><script src="/cb1608f2-3d1f96b69f7c4498694b.js" async=""></script><script src="/app-1ec2fc3f7109d0ad363b.js" async=""></script><script src="/framework-094b0089736b8f621f0d.js" async=""></script><script src="/webpack-runtime-525abdf8add91663956b.js" async=""></script></body></html>
