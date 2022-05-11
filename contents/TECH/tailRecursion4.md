@@ -10,7 +10,7 @@ thumbnail: '../images/postBg/tech.png'
 
 ---
 
-```jsx
+```javascript
  과제
  1. [1,[2,[3,[4,[5]]]]] 를 stringify 해보자.
  2. [1, 2, ['a', [1, 2], false], 3, ['b', 'c', [1, 2]]] 를 stringify 해보자.
@@ -33,7 +33,7 @@ thumbnail: '../images/postBg/tech.png'
 
 ### stack으로 구현 (tails recursion)
 
-```jsx
+```javascript
 "use strict";
 
  if (1) {
@@ -84,7 +84,7 @@ thumbnail: '../images/postBg/tech.png'
 
 ### stack으로 구현 (제어문)
 
-```jsx
+```javascript
 "use strict";
 
 if (2) {
@@ -143,14 +143,14 @@ if (2) {
 
 ```
 재귀를 제어문으로 바꿀때 변수의 **순서에 유의**해야 한다. 예를들어 
-```jsx
+```javascript
 stack = [arr, idx + 1, acc, stack];
 arr = el;
 idx = 0;
 acc = [];
 ```
 위를
-```jsx
+```javascript
 arr = el;
 idx = 0;
 acc = [];
@@ -160,7 +160,7 @@ stack = [arr, idx + 1, acc, stack];
 
 ### linked list로 구현 (tails recursion)
 
-```jsx
+```javascript
 if (1) {
   const arr = [1, [2]];
   const err = (v) => {
@@ -207,7 +207,7 @@ acc는 현재 배열 안에 있는 모든 요소를 저장하는 용도로 사�
 
 ### linked list로 구현 (제어문)
 
-```jsx
+```javascript
 if (2) {
   const arr = [1, [2]];
   const err = (v) => {
@@ -267,7 +267,7 @@ if (2) {
 <br/>
 
 ### tails recursion
-```jsx
+```javascript
 if (1) {
   const arr = ["ab", 1, 2, ["a", "b"]];
   const err = (v) => {
@@ -333,13 +333,13 @@ if (1) {
 
   **컬렉션의 사용**
   
-  ```jsx
+  ```javascript
   1.
   const parent = [];
   parent.push(child1, child2, child3 ...);
   ```
 
-  ```jsx
+  ```javascript
   2. 
   let parent;
   child1.parent = parent;

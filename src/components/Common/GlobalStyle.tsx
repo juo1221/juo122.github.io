@@ -7,7 +7,7 @@ const defaultStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Noto Serif KR', serif;
+    font-family: KOPUBWORLD DOTUM MEDIUM;
     line-height: 2.5;
   }
   html,

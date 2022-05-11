@@ -124,12 +124,28 @@ const MarkdownRenderer = styled.div`
   pre[class*='language-'] {
     margin: 30px 0;
     padding: 15px;
-    font-size: 13px;
+    font-size: 15px;
+    background-color: #282c34;
     border-radius: 3px;
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
     }
+  }
+  pre[class*='language-'] code,
+  pre code {
+    color: #fff;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New,
+      monospace;
+  }
+
+  code:not(pre > code) {
+    color: #f35e79 !important;
+    background: rgba(27, 31, 35, 0.05);
+    padding: 5px;
   }
 
   code[class*='language-'],

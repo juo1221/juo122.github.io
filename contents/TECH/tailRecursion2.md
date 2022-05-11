@@ -12,7 +12,7 @@ thumbnail: '../images/postBg/tech.png'
 
 완벽한 JSON.stringify를 구현하기엔 아직 실력이 부족하기 때문에 가장 쉬운 기초 버전부터 구현해보자.
 
-```jsx
+```javascript
 const arr = [1, 'ab"c', true, undefined, null, _ => 3, Symbol(), {}]
 
 console.log(구현할함수(arr) === JSON.stringify(arr))
@@ -36,7 +36,7 @@ true가 나오도록 함수를 만들어보자.
 
 #### validator
 
-```jsx
+```javascript
 const validator = {
   data: [
     v => typeof v === 'string',
@@ -72,7 +72,7 @@ const validator = {
 
 #### 재귀
 
-```jsx
+```javascript
 if (1) {
   const arr = [1, 'ab"c', true, undefined, null, _ => 3, Symbol(), {}]
   const _stringify = arr => {
@@ -106,7 +106,7 @@ if (1) {
 
 #### tail recursion
 
-```jsx
+```javascript
 if (1) {
   const arr = [1, 'ab"c', true, undefined, null, _ => 3, Symbol(), {}]
   const go = (arr, str) => {
@@ -144,7 +144,7 @@ if (1) {
 
 #### 제어문
 
-```jsx
+```javascript
 if (1) {
   const arr = [1, 'ab"c', true, undefined, null, _ => 3, Symbol(), {}]
   const stringify = value => {

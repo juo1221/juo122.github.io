@@ -10,7 +10,7 @@ thumbnail: '../images/postBg/tech.png'
 
 ---
 
-```jsx
+```javascript
 const arr = [1, 'ab"c', true, undefined, null, _ => 3, Symbol(), {}]
 
 console.log(구현할함수(arr) === JSON.stringify(arr))
@@ -33,7 +33,7 @@ true가 나오도록 함수를 만들어보자.
 5. 변수명 제대로 
   - "go" 가 아니라 재귀의 의미를 갖도록 변경.
 
-```jsx
+```javascript
 "use strict";
 
 if (1) {
@@ -104,7 +104,7 @@ if (1) {
   내결함성이란 프로그램이 실패하지 않게 만드는 장치를 말한다. 
   내결함성에 걸리면 컨텍스트 오류가 발생하는데 컨텍스트 오류는 프로그램이 죽지도 않으면서 알수없는 값을 출력하기 때문에 디버깅하기 굉장히 어렵다.
   예를들면 이런코드를 말한다.
-  ```jsx
+  ```javascript
   const recursive = (list, index = 0, acc = 0) => {
   if (!Array.isArray(list)) return 0;
   };
@@ -112,14 +112,14 @@ if (1) {
   list가 배열이 아니라면 0을 리턴하고 프로그램은 제대로 동작한다. 복잡하고 긴 코드로 이루어졌을 경우 하나의 내결함성으로 인해 디버깅이 굉장히 어려워지게 된다. 
 
   이런 내결함성을 회피하기 위해서는
-  ```jsx
+  ```javascript
   const recursive = (list, index = 0, acc = 0) => {
     if (!Array.isArray(list)) throw `invaild list : ${list}`;
   };
   ```
   throw를 이용해서 프로그램을 죽여야한다. 
   throw는 문 이기때문에 코드의 중간에 삽입될 수 없다. 따라서 함수를 이용해 식으로 바꿔주고 사용하도록 하자. 
-  ```jsx
+  ```javascript
   const err = (v) => {throw v}
   const recursive = (list, index = 0, acc = 0) => {
     if (!Array.isArray(list)) err(`invaild list : ${list}`);

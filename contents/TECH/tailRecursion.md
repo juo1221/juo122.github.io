@@ -28,7 +28,7 @@ Tail recursion : 재귀함수도 일정한 조건을 지키면 제어문처럼 �
 
 1. 에러표출을 위해 문을 식으로 변경
 
-   ```jsx
+   ```javascript
    const err = v => {
      throw v
    }
@@ -36,7 +36,7 @@ Tail recursion : 재귀함수도 일정한 조건을 지키면 제어문처럼 �
 
 2. 합계에 대한 재귀함수
 
-   ```jsx
+   ```javascript
    if (1) {
      const _sum = num => (num ? num + _sum(num - 1) : 0)
      const sum = num =>
@@ -47,7 +47,7 @@ Tail recursion : 재귀함수도 일정한 조건을 지키면 제어문처럼 �
 
 3. 합계에 대한 tail recursion
 
-   ```jsx
+   ```javascript
    if (1) {
      const _sum = (num, acc) => (num ? _sum(num - 1, acc + num) : acc)
      const sum = num =>
@@ -58,7 +58,7 @@ Tail recursion : 재귀함수도 일정한 조건을 지키면 제어문처럼 �
 
 4. 제어문으로 변경
 
-   ```jsx
+   ```javascript
    if (1) {
      const sum = num => {
        if (typeof num !== 'number') err(`invalid type of ${num}`)
@@ -80,7 +80,7 @@ Tail recursion : 재귀함수도 일정한 조건을 지키면 제어문처럼 �
 
 1. 배열합계의 재귀함수
 
-```jsx
+```javascript
 if (1) {
   const arr = Array.from({ length: 5 }, (_, i) => i + 1)
   const _sum = arr => (arr.length ? arr.pop() + _sum(arr) : 0)
@@ -91,7 +91,7 @@ if (1) {
 
 2. 배열합계의 tail recursion
 
-```jsx
+```javascript
 if (2) {
   const arr = Array.from({ length: 5 }, (_, i) => i + 1)
   const _sum = (arr, acc) => (arr.length ? _sum(arr, arr.pop() + acc) : acc)
@@ -102,7 +102,7 @@ if (2) {
 
 3. 제어문으로 변경
 
-```jsx
+```javascript
 if (3) {
   const arr = []
   const sum = arr => {
