@@ -55,6 +55,7 @@ const Title = styled.div`
   font-family: KOTRA_BOLD;
   @media (max-width: 768px) {
     font-size: 30px;
+    margin-top: 1rem;
   }
 `
 

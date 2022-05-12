@@ -12,25 +12,35 @@ const PostItemWrapper = styled(Link)`
   border-radius: 10px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   transition: 0.3s box-shadow;
-  min-width: 500px;
+  min-width: 300px;
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 5px #324a51;
   }
-  @media (max-width: 768px) {
-    margin: 8px 12px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    border-radius: 5px 5px 0 0;
   }
 `
 
 const ThumbnailImage = styled(GatsbyImage)`
   width: 300px;
   border-left: 1px solid lightgrey;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    border-left: 0;
+    border-bottom: 1px solid lightgrey;
+  }
 `
 const PostItemContent = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 15px;
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `
 const Title = styled.div`
   display: -webkit-box; //상자 가로로 정렬
@@ -43,16 +53,27 @@ const Title = styled.div`
   margin-bottom: 3px;
   font-size: 20px;
   font-weight: 700;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
 `
 const Date = styled.div`
   font-size: 14px;
   font-weight: 400;
   opacity: 0.7;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `
 const Category = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 10px -5px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
 `
 const CategoryItem = styled.div`
   margin: 2.5px 5px;
@@ -62,6 +83,9 @@ const CategoryItem = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: #ffffff;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `
 const Summary = styled.div`
   display: -webkit-box;
@@ -74,6 +98,9 @@ const Summary = styled.div`
   margin-top: auto;
   font-size: 16px;
   opacity: 0.8;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
@@ -90,12 +117,12 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
+        <Summary>{summary}</Summary>
         <Category>
           {categories.map(item => (
             <CategoryItem key={item}>{item}</CategoryItem>
           ))}
         </Category>
-        <Summary>{summary}</Summary>
       </PostItemContent>
       <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
     </PostItemWrapper>
