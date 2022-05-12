@@ -1,0 +1,23 @@
+@font-face {
+  font-family: KoPubWorld;
+  src: url('KoPubWorld.woff2') format('woff2'),
+    url('KoPubWorld.woff') format('woff'),
+    url('KoPubWorld.ttf') format('truetype');
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: KOTRA_BOLD;
+  src: url('KOTRA_BOLD.woff2') format('woff2'),
+    url('KOTRA_BOLD.woff') format('woff'),
+    url('KOTRA_BOLD.ttf') format('truetype');
+  font-display: fallback;
+}
+
+p {
+  font-family: 'KoPubWorld';
+}
+
+.title {
+  font-family: 'KOTRA_BOLD';
+}
